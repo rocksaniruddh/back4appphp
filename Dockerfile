@@ -1,5 +1,5 @@
 # Use the official PHP image as the base image
-FROM php:8.2.3-apache-bullseye
+FROM php:8.2.3-apache
 
 # Copy the application files into the container
 COPY . /var/www/html
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install \
     intl \
     zip \
-    && a2enmod rewrite headers \
+    && a2enmod rewrite \
     && service apache2 restart
 
 # Expose port 80
